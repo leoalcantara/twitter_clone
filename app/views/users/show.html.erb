@@ -1,0 +1,16 @@
+<h1>Perfil do  <%= @user.email%></h1>
+
+<h2>Tweets</h2>
+
+<% if @user.tweets.empty?%>
+	<p>O usuário ainda não tem tweets</p>
+<%else%>
+<ul>
+	<% @user.tweets.each do |tweet| %>
+	<li><%= tweet.content %></li>
+	<% end %>
+</ul>
+<%end%>
+<hr>
+
+<i><%= @user.email%> possui <%= @user.tweets.count%> tweets</i>

@@ -16,10 +16,10 @@
 	<br>
 	<hr>
 	<ul>
-	<li><% current_user.tweets.each do |tweet| %>
-		<%=tweet.content %>
+	<% current_user.tweets.each do |tweet| %>
+		<li><%=tweet.content %></li>
 		
-	<%end%></li>
+	<%end%>
 	</ul>
     <hr>
 	</div>
