@@ -1,1 +1,34 @@
 <h1> Estamos na home</h1>
+
+<% if user_signed_in? %>
+	<div>
+	Olá, <%= current_user.email %>
+	
+	<%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+	</div>
+	<div>
+	<h2>Lista de Tweets</h2>
+
+	<%= form_for @tweet do |f| %>
+		<%= f.text_field :content %>
+		<%= f.submit %>
+	<%end%>
+	<br>
+	<hr>
+	<ul>
+	<li><% current_user.tweets.each do |tweet| %>
+		<%=tweet.content %>
+		
+	<%end%></li>
+	</ul>
+    <hr>
+	</div>
+	<br>
+	
+	
+
+<%	else %>
+
+	<%= link_to 'Clique aqui para logar', new_user_session_path%>
+
+<%end%>	
