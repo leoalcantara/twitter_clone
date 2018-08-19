@@ -1,5 +1,8 @@
 <h1>Perfil do  <%= @user.email%></h1>
 
+<p>Seguido <%=@user.followers.count%> usuários </p>
+<p>Seguindo <%=@user.followeds.count%> usuários </p>
+ 
 <h2>Tweets</h2>
 
 <% if @user.tweets.empty?%>
