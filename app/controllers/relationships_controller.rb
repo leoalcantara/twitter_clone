@@ -1,14 +1,25 @@
 class RelationshipsController < ApplicationController
 
 	def create 
-		current_user.follow!(User.find(params["id"]))
+		pry
+		@user = User.find(params[:id])
+		
+		if current_user.following? @user
+			redirect_to user_path(@user), alert: 'Usuário já está sendo seguido'
+		else
+			current_user.follow! @user
+			redirct_to user_path(@user), notice: 'Usuário sendo seguido com sucesso'
+		end
 		
 	end
 
 	def destroy
-		if current_user.following?(User.find(params['id']))
-			current_user.unfollow!(User.find(params['id']))
+		@user = User.find(params[:id])
+		
+			current_user.unfollow! @user
+			redirect_to user_path(@user), notice: 'Usuário deixou de serguido'
 			
+
 	end
 		
-end
+end		
